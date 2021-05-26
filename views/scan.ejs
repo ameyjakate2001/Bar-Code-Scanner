@@ -4,24 +4,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>scan</title>
-
-
+    <title>QR CODE SCAN</title>
+    
     <style>
-        .container {
-            display: flex;
+        
+        * {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
         }
+        body {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background:rgb(9, 132, 134) ;
+        }
+        .top-section {
+            height: 17vh;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-section .logo{
+            margin: 0 40px;
+        }
+        .top-section .right{
+            margin: 0px 170px;
+            padding-top: 60px;
+        }
+        .right h1 {
+            text-transform: uppercase;
+            padding-bottom: 10px;
+        }
+        .right h2 {
+            padding: 7px;
+            background: #fff;
+            color: #000;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .bottom-section {
+            margin-top: 100px;
+        }
+        .bottom-section .one-section {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+        .bottom-section .one-section h1{
+            padding:20px 15px;
+            background: #fff;
+            border-radius: 50%;
+            height: 130px;
+            text-align: center;
+            line-height: 90px;
+        }
+        
     </style>
 </head>
 <body>
-   
-    <% for (var i =1; i <= quantity;  i++ ) { %>
-         <div class="container">
-                <img src=<%= src %> alt="">
-                <h1><%= i %> th Code</h1>
+    
+    <div class="container">
+        
+        <div class="top-section">
+            <div class="logo">
+                <h1>Berger Paint</h1>
+            </div>
+            <div class="right">
+                <h1>Painter Token</h1>
+                <h2>Easy Clean <span>20ft</span></h2>
+            </div>
         </div>
-     <% } %>
-
-            
-</body>
- </html>
+        
+        <div class="bottom-section">
+            <% for (var i =1; i <= quantity;  i++ ) { %>
+                <div class="one-section">
+                    <img src=<%= src %> alt="">
+                    <h1><%= i %> th Code</h1>
+                </div>                
+                <% } %> 
+           </div>
+        </div>
+        
+        
+    </body>
+    </html>

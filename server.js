@@ -17,6 +17,7 @@ app.post('/scan' , (req, res) => {
     const { Product_Name, quantity } = req.body;
     const data = {
       Product_Name,
+      Price:200,
       id: uuidv1(),
     };
     let stringdata = JSON.stringify(data);
