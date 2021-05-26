@@ -13,15 +13,19 @@ app.get('/', (req, res) => {
 })
 
 app.post('/scan' , (req, res) => {
-   const url = req.body.url;
-   if(url.length === 0)
-      res.send("empty Data !!")
+    const { Product_Name, quantity } = req.body;
+    const data = {
+        Product_Name
+    }
+    let stringdata = JSON.stringify(data);
+
+    if (Product_Name.length === 0) res.send("empty Data !!");
     
-      qr.toDataURL(url, (err, src) => {
-          if(err) res.send('error occured')
-          console.log(src);
-          res.render("scan", {src})
-      })
+    qr.toDataURL(stringdata, (err, src) => {
+      if (err) res.send("error occured");
+      console.log(src);
+      res.render("scan", { src, quantity });
+    });
 })
 
 
