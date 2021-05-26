@@ -3,6 +3,7 @@ const app = express() ;
 const port = process.env.PORT || 5000;
 const bp = require('body-parser')
 const qr = require('qrcode')
+const { v1: uuidv1, v4: uuidv4 } = require("uuid");
 
 app.set('view engine', "ejs");
 app.use(express.urlencoded({extended:false}))
@@ -15,8 +16,9 @@ app.get('/', (req, res) => {
 app.post('/scan' , (req, res) => {
     const { Product_Name, quantity } = req.body;
     const data = {
-        Product_Name
-    }
+      Product_Name,
+      id: uuidv1(),
+    };
     let stringdata = JSON.stringify(data);
 
     if (Product_Name.length === 0) res.send("empty Data !!");
