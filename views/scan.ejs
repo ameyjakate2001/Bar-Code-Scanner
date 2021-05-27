@@ -15,26 +15,17 @@
         }
         body {
             font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background:rgb(9, 132, 134) ;
+            background:#000 ;
         }
         .top-section {
             height: 17vh;
             color: white;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
+            margin-bottom: 15px;
         }
-        .top-section .logo{
-            margin: 0 40px;
-        }
-        .top-section .logo h1{
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-        .top-section .right{
-            margin: 0px 170px;
-            padding-top: 60px;
-        }
+        
         .right h1 {
             text-transform: uppercase;
             padding-bottom: 10px;
@@ -46,19 +37,27 @@
             border-radius: 20px;
             text-align: center;
         }
+        .top-section .logo{
+            margin: 0 0 30px 0;
+        }
+        .top-section .logo h1{
+            font-size: 2.5em;
+            font-weight: bold;
+        }
         .right h2 span{
             font-weight: lighter;
-        }
+        } 
         
         .bottom-section {
-            margin-top: 100px;
+            margin:50px 0px 20px 0;
         }
-        .bottom-section .one-section {
+        .bottom-section .code {
             display: flex;
             justify-content: space-around;
             margin-bottom: 15px;
+            padding: 0 0 10px 0;
         }
-        .bottom-section .one-section h1{
+        .bottom-section .code h1{
             padding:20px 15px;
             background: #fff;
             border-radius: 50%;
@@ -66,33 +65,49 @@
             text-align: center;
             line-height: 90px;
         }
+        .one-section {
+            margin-bottom: 25px;
+            background: darkcyan;
+            width: 80%;
+            margin: auto;
+        }
+        .myBtn {
+            font-size: 1.9em;
+            margin: auto;
+            display: block;
+            width: 15%;
+            padding: 8px 3px;
+        }
         
     </style>
 </head>
 <body>
     
-    <div class="container">
-        
-        <div class="top-section">
-            <div class="logo">
-                <h1>Berger Paint</h1>
-            </div>
-            <div class="right">
-                <h1>Painter Token</h1>
-                <h2>Easy Clean <span>20ft</span></h2>
-            </div>
-        </div>
+    <!-- <div class="container"> -->
         
         <div class="bottom-section">
             <% for (var i =1; i <= quantity;  i++ ) { %>
                 <div class="one-section">
-                    <img src=<%= src %> alt="">
-                    <h1><%= i %> th Code</h1>
-                </div>                
+                    <div class="top-section">
+                        <div class="logo">
+                            <h1>Berger Paint</h1>
+                        </div>
+                        <div class="right">
+                            <h1>Painter Token</h1>
+                            <h2>Easy Clean <span>20ft</span></h2>
+                        </div>
+                    </div>
+                    
+                    <div class="code">
+                        <img src=<%= src %> alt="">
+                        <h1><%= i %> th Code</h1>
+                    </div>             
+                </div>
                 <% } %> 
-           </div>
-        </div>
-        
-        
-    </body>
-    </html>
+            
+                <button onclick="window.print()" class="myBtn">Print</button>
+            </div>
+            
+            
+        </body>
+        </html>
