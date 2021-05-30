@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express() ;
 const port = process.env.PORT || 5000;
-const bp = require('body-parser')
 const qr = require('qrcode')
+// const dataArray = require('./data')
+const util = require("util");
 const { v1: uuidv1, v4: uuidv4 } = require("uuid");
 
 app.set('view engine', "ejs");
@@ -15,21 +16,34 @@ app.get('/', (req, res) => {
 })
 
 app.post('/scan' , (req, res) => {
-    const { Product_Name, quantity } = req.body;
-    const data = {
-      Product_Name,
-      Price:200,
-      id: uuidv1(),
-    };
-    let stringdata = JSON.stringify(data);
-
+    const { Product_Name, Price, quantity } = req.body;
     if (Product_Name.length === 0) res.send("empty Data !!");
-    
-    qr.toDataURL(stringdata, (err, src) => {
-      if (err) res.send("error occured");
-      console.log(src);
-      res.render("scan", { src, quantity });
-    });
+     var dataArray = [];
+     var arr = [];
+
+         const GetInfoOneCard = async () => {
+           const obj = {
+             product_Name: Product_Name,
+             price: Price,
+             id: uuidv1(),
+           };
+            console.log(obj.price);
+           dataArray.push(obj);
+           const stringdata = JSON.stringify(obj);
+           const data = util.promisify(qr.toDataURL);
+             await data(stringdata).then(result => {
+              arr.push({ price: obj.price, src: result})
+           }).catch((e)=> {console.log(e);})
+         };;
+
+         const forLoop = async () => {
+           for (let index = 0; index < quantity; index++) {
+             const numFruit = await GetInfoOneCard();
+             if(index == quantity-1) {
+                  res.render('scan', {arr, quantity})
+             }
+         }}
+         forLoop();
 })
 
 
