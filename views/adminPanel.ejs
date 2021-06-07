@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Admin Panel</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: darkgrey;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 20vh;
+        }
+        .company-name {
+            margin-right: 40px;
+        }
+        .company-name h1{
+            color: rgb(0, 0, 0);
+            font-size: 3em;
+        }
+        .logo {
+            margin-left: 30px;
+        }
+        img {
+            width: 130px;
+            height: 130px;
+        }
+        .section {
+            display: flex;
+            min-height: 80vh;
+        }
+        .left-menu {
+            text-align: center;
+            flex-basis: 20%;
+            background:darkslategrey;
+        }
+        .right-sections {
+            flex-basis: 80%;
+            background: rgb(182, 88, 0);
+            text-align: center;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+        }
+        .left-menu ul li {
+            padding: 25px 0px;
+        }
+        .left-menu ul li:hover{
+            background:#fff;
+        }
+        .left-menu ul li:hover a{
+            color: black;
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="header">
+            <div class="logo">
+                <img src="/kisspng-mangalore-berger-paints-company-house-painter-and-bathroom-mat-5b06b9ac135611.9765751215271674040793.png" alt="">
+            </div>
+            <div class="company-name">
+                <h1>Berger Paint</h1>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="left-menu">
+                <ul>
+                    <li><a href="/register">Add User</a></li>
+                    <li><a href="/Users">User List</a></li>
+                    <li><a href="/scan">Products</a></li>
+                    <li><a href="/generatedBarcode">Generated Barcodes</a></li>
+                    <li><a href="/History">History</a></li>
+                    <li><a href="/Logout">Logout</a></li>
+                </ul>
+            </div>
+            <div class="right-sections">
+                <% users.forEach(user => { %>
+                    <div class="m-auto card my-4 text-center" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><%=user.name %></li>
+                            <li class="list-group-item"><%=user.email %></li>
+                            <li class="list-group-item"><%=user.company_name %></li>
+                            <li class="list-group-item"><%=user.district %></li>
+                        </ul>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+    </html>

@@ -1,5 +1,6 @@
 const express = require('express')
-const expressLayouts = require('express-ejs-layouts')
+const dotenv = require("dotenv");
+dotenv.config();
 const mongoose = require('mongoose');
 const flash = require('connect-flash')
 const session = require('express-session')
@@ -8,7 +9,7 @@ const passport = require('passport')
 const app = express() ;
 const port = process.env.PORT || 5000;
 
-  const db = require('./config/keys').MongoURI;
+  const db = process.env.MongoURI;
   mongoose
     .connect(db, { useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log("connected to db"))
@@ -16,7 +17,6 @@ const port = process.env.PORT || 5000;
 
     require('./config/passport')(passport);
 
-app.use(expressLayouts)
 app.set('view engine', "ejs");
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
@@ -48,9 +48,8 @@ app.use((req, res, next) => {
 })
 
 
-
-app.use('/', require('./routes'))
-app.use('/users', require('./routes/users'))
+app.use("/", require("./routes"));
+app.use('/', require('./routes/users'))
 app.use("/", require("./routes/scan"));
 
 app.listen(port, () => {

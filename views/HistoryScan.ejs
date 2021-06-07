@@ -110,25 +110,12 @@
                 </div>
                 <% } %> 
                 
-                <button id="btn" class="btn btn-success btn-lg d-block w-50 m-auto mb-4">Save to Database</button>
                 <button onclick="window.print()" class="myBtn">Print</button>
             </div>
-
-
-
-            
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script>
-                $('#btn').on('click', function() {
-                    alert('Do You want to save Barcodes to Database ?')
-                    $.ajax({
-                        type: 'POST',
-                        url: '/saveAllBarcodes',
-                        // success: function(resultData) {
-                        //     alert('send')
-                        // }
-                    });
-                });
             </script>
         </body>
         </html>
+
+
+        scannedBarcodes.ScannedBarcodes 
+        scannedBarcodes
